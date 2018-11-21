@@ -1,3 +1,5 @@
+import api from '@/utils/api'
+
 const state = {
   count: 0,
   keyList: [],

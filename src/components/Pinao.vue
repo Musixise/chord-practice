@@ -1,7 +1,7 @@
 <template>
   <Modal title="">
     <div class="pinao-container">
-      <Key v-for="i in getKeyNumberList" :active="downKey.find(item => item === i) >= 0 " :number="i" :key="i"/>
+      <Key v-for="i in getKeyNumberList" :force="forceKey.find(item => item === i) >= 0" :active="downKey.find(item => item === i) >= 0 " :number="i" :key="i"/>
     </div>
   </Modal>
 </template>
@@ -16,7 +16,8 @@ export default {
     Key,
   },
   props: {
-    downKey: Array
+    downKey: Array,
+    forceKey: Array,
   },
   computed: {
     getKeyNumberList: function(){

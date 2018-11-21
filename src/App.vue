@@ -6,17 +6,38 @@
   </div>
 </template>
 <script>
+import WebFontLoader from 'webfontloader'
+
 export default {
   name: 'App',
-  created() {
-    
+  
+  mounted () {
+    WebFontLoader.load({
+      google: {
+        families: ['Roboto:100,300,400,500,700,900']
+      },
+      active: this.setFontLoaded
+    })
   },
+  methods: {
+    setFontLoaded () {
+      this.$emit('font-loaded')
+    }
+  }
 }
 </script>
 <style>
 *{
   margin: 0;
   padding: 0;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+}
+#app {
+  width: 100%;
+  height: 100%;
 }
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;

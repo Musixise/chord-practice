@@ -1,5 +1,5 @@
 <template>
-  <div :class="[isActive, getKeyType]" @mousedown="handleMouseDown" @mouseup="handleMouseUp" @mouseleave="handleMouseUp" >{{ getKeyName }}</div>
+  <div :class="[isForce, isActive, getKeyType]" @mousedown="handleMouseDown" @mouseup="handleMouseUp" @mouseleave="handleMouseUp" >{{ getKeyName }}</div>
 </template>
 <script>
 // 键盘的 key 从0 - 120
@@ -9,12 +9,17 @@
       data(){
       return {
         isActive: '',
+        isForce: '',
       }
     },
     props: {
       number: Number,
       handleKeyDown: Function,
       active: Boolean,
+      force: Boolean,
+    },
+    mounted(){
+      this.isForce = (this.force ? 'isForce' : '')
     },
     computed: {
       getKeyName: function(){
@@ -67,7 +72,10 @@
     watch: {
       active: function(bool) {
         this.isActive = (bool ? 'isActive' : '')
-      }
+      },
+      force: function(bool) {
+        this.isForce = (bool ? 'isForce' : '')
+      },
     },
     methods: {
       handleMouseDown: function(){
@@ -127,8 +135,15 @@
     border-bottom: 1px solid #999;
   }
   .isActive{
-    background: rgb(212, 211, 210);
+    background: rgb(212, 211, 210) !important;
     box-shadow: 0 0 0 #fff;
+    border-bottom: 1px solid #777;
+    color: #999 !important;
+  }
+  .isForce{
+    background: #4199ee;
+    box-shadow: 0 0 0 #fff;
+    color: #fff;
     border-bottom: 1px solid #777;
   }
 </style>

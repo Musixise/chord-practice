@@ -1,7 +1,7 @@
 <template>
     <div>
       <h2>和弦练习</h2>
-      <router-link to="/workspace">ENTER</router-link>
+      <router-link to="/folder">ENTER</router-link>
     </div>
 </template>
 <script>
